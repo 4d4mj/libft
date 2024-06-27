@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajabado <ajabado@student.42beirut.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/12 14:30:58 by ajabado           #+#    #+#             */
-/*   Updated: 2024/06/28 02:09:37 by ajabado          ###   ########.fr       */
+/*   Created: 2024/06/28 02:06:05 by ajabado           #+#    #+#             */
+/*   Updated: 2024/06/28 02:06:05 by ajabado          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-int	ft_atoi(const char *str)
+long	ft_atol(const char *str)
 {
-	int	result;
+	long	result;
 	int	sign;
 
 	result = 0;
@@ -24,10 +24,7 @@ int	ft_atoi(const char *str)
 	if (*str == '+' || *str == '-')
 		if (*str++ == '-')
 			sign = -1;
-	while (*str >= '0' && *str <= '9')
-	{
-		result = result * 10 + (*str - '0');
-		str++;
-	}
+	while (ft_isdigit(*str))
+		result = result * 10 + (*(str++) - '0');
 	return (result * sign);
 }

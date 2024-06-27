@@ -6,7 +6,7 @@
 /*   By: ajabado <ajabado@student.42beirut.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 11:45:53 by ajabado           #+#    #+#             */
-/*   Updated: 2024/06/27 15:48:26 by ajabado          ###   ########.fr       */
+/*   Updated: 2024/06/28 02:11:08 by ajabado          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int			ft_isdigit(int c);
 int			ft_isprint(int c);
 int			ft_tolower(int c);
 int			ft_toupper(int c);
+int			ft_isspace(int c);
 
 // memory functions
 void		*ft_memchr(const void *s, int c, size_t n);
@@ -60,6 +61,7 @@ void		*ft_calloc(size_t num, size_t size);
 // conversion functions
 int			ft_atoi(const char *str);
 char		*ft_itoa(int n);
+long		ft_atol(const char *str);
 
 // file description functions
 int			ft_putchar_fd(char c, int fd);

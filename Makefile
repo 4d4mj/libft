@@ -6,7 +6,7 @@
 #    By: ajabado <ajabado@student.42beirut.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/26 15:38:04 by ajabado           #+#    #+#              #
-#    Updated: 2024/06/27 16:27:59 by ajabado          ###   ########.fr        #
+#    Updated: 2024/06/28 02:11:23 by ajabado          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SHOW=$'\x1b[?25h
 OBJS_CHAR = $(SRC_CHAR:.c=.o)
 SRC_CHAR = $(addprefix $(SRC_DIR)/char/, \
 ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_tolower.c \
-ft_toupper.c \
+ft_toupper.c ft_isspace.c \
 )
 
 # linked list
@@ -50,7 +50,7 @@ ft_memset.c \
 # conversion
 OBJS_CONV = $(SRC_CONV:.c=.o)
 SRC_CONV = $(addprefix $(SRC_DIR)/conv/, \
-ft_atoi.c ft_itoa.c \
+ft_atoi.c ft_itoa.c ft_atol.c \
 )
 
 # character string
