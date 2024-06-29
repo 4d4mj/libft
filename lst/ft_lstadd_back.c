@@ -20,5 +20,8 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	if (!last)
 		*lst = new;
 	else
+	{
 		last->next = new;
+		new->prev = last;
+	}
 }
