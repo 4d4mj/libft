@@ -11,20 +11,20 @@
 # **************************************************************************** #
 
 # color codes
-END=$'\x1b[0m
-BOLD=$'\x1b[1m
-UNDER=$'\x1b[4m
-REV=$'\x1b[7m
-GREY=$'\x1b[30m
-RED=$'\x1b[31m
-GREEN=$'\x1b[32m
-YELLOW=$'\x1b[33m
-BLUE=$'\x1b[34m
-PURPLE=$'\x1b[35m
-CYAN=$'\x1b[36m
-WHITE=$'\x1b[37m
-HIDE=$'\x1b[?25l
-SHOW=$'\x1b[?25h
+END=\033[0m
+BOLD=\033[1m
+UNDER=\033[4m
+REV=\033[7m
+GREY=\033[30m
+RED=\033[31m
+GREEN=\033[32m
+YELLOW=\033[33m
+BLUE=\033[34m
+PURPLE=\033[35m
+CYAN=\033[36m
+WHITE=\033[37m
+HIDE=\033[?25l
+SHOW=\033[?25h
 
 # character
 OBJS_CHAR = $(SRC_CHAR:.c=.o)
@@ -58,8 +58,8 @@ OBJS_STR = $(SRC_STR:.c=.o)
 SRC_STR	= $(addprefix $(SRC_DIR)/str/, \
 ft_split.c ft_strchr.c ft_strdup.c \
 ft_striteri.c ft_strjoin.c ft_strlcat.c ft_strlcpy.c \
-ft_strlen.c ft_strmapi.c ft_strncmp.c ft_strnstr.c \
-ft_strrchr.c ft_strtrim.c ft_substr.c ft_in.c \
+ft_strlen.c ft_strmapi.c ft_strcmp.c ft_strncmp.c \
+ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c ft_in.c \
 )
 
 # file descriptor
@@ -101,7 +101,7 @@ all : $(LIBFT_NAME)
 $(LIBFT_NAME) : $(MF) $(OBJS_CHAR) $(OBJS_LST) $(OBJS_MEM) $(OBJS_CONV) $(OBJS_STR) $(OBJS_PUT) $(OBJS_PRINTF) $(OBJS_GNL)
 	@/bin/echo -en "$(HIDE)"
 	@$(AR) -rcs $(LIBFT_NAME) $(OBJS_CHAR) $(OBJS_LST) $(OBJS_MEM) $(OBJS_CONV) $(OBJS_STR) $(OBJS_PUT) $(OBJS_PRINTF) $(OBJS_GNL)
-	@/bin/echo -e "\n${GREEN}> Compiled libft successfully$(END)"
+	@/bin/echo -e "\n$(BOLD)${GREEN}> Compiled libft successfully$(END)"
 	@/bin/echo -en "$(SHOW)"
 
 clean :
@@ -110,7 +110,7 @@ clean :
 
 fclean : clean
 	@rm -f $(LIBFT_NAME)
-	@/bin/echo -e "$(GREEN)> Cleaning of libft has been done$(END)"
+	@/bin/echo -e "$(BOLD)$(GREEN)> Cleaning of libft has been done$(END)"
 
 re : fclean all
 
@@ -118,7 +118,7 @@ re : fclean all
 	@/bin/echo -en "$(HIDE)"
 	@$(eval COUNTER=$(shell echo $$(($(COUNTER) + 1))))
 	@$(CC) $(FLAGS) -c $< -o $@ -I $(INC_DIR)
-	@/bin/echo -en "$(YELLOW)\rCompiling: $(END)["
+	@/bin/echo -en "$(BOLD)$(YELLOW)\rCompiling: $(END)["
 	@printf "%0.s#" $(shell seq 1 $(COUNTER))
 	@if [ $(COUNTER) -lt $(TOTAL_FILES) ]; then \
 		printf "%0.s." $(shell seq 1 $$(($(TOTAL_FILES) - $(COUNTER)))); \
