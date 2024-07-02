@@ -50,7 +50,7 @@ ft_memset.c \
 # conversion
 OBJS_CONV = $(SRC_CONV:.c=.o)
 SRC_CONV = $(addprefix $(SRC_DIR)/conv/, \
-ft_atoi.c ft_itoa.c ft_atol.c \
+ft_atoi.c ft_itoa.c ft_atol.c ft_nbrlen.c \
 )
 
 # character string
