@@ -20,26 +20,6 @@ static int	ft_abs(int nb)
 		return (-nb);
 }
 
-static int	ft_nbrlen(int n)
-{
-	int	len;
-
-	len = 0;
-	if (n == -2147483648)
-		return (11);
-	if (n <= 0)
-	{
-		len++;
-		n = -n;
-	}
-	while (n > 0)
-	{
-		len++;
-		n /= 10;
-	}
-	return (len);
-}
-
 static int	ft_before(t_format *s_format, int nbrlen, int nb, int isminus)
 {
 	int	len;

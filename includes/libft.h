@@ -60,6 +60,7 @@ void		ft_bzero(void *s, size_t n);
 void		*ft_calloc(size_t num, size_t size);
 
 // conversion functions
+int			ft_nbrlen(int n);
 int			ft_atoi(const char *str);
 char		*ft_itoa(int n);
 long		ft_atol(const char *str);
