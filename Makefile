@@ -56,7 +56,7 @@ ft_atoi.c ft_itoa.c ft_atol.c ft_nbrlen.c \
 # character string
 OBJS_STR = $(SRC_STR:.c=.o)
 SRC_STR	= $(addprefix $(SRC_DIR)/str/, \
-ft_split.c ft_strchr.c ft_strdup.c \
+ft_split.c ft_strchr.c ft_strdup.c ft_strndup.c \
 ft_striteri.c ft_strjoin.c ft_strlcat.c ft_strlcpy.c \
 ft_strlen.c ft_strmapi.c ft_strcmp.c ft_strncmp.c \
 ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c ft_in.c \
