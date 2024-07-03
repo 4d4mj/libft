@@ -74,7 +74,7 @@ int			ft_putnbr_fd(int n, int fd);
 // character string functions
 char		*ft_strchr(const char *s, int c);
 char		*ft_strdup(const char *s1);
-char		*ft_strndup(char *s1, size_t n);
+char		*ft_strndup(const char *s1, size_t n);
 size_t		ft_strlcat(char *dst, const char *src, size_t size);
 size_t		ft_strlcpy(char *dst, const char *src, size_t size);
 size_t		ft_strlen(const char *s);
