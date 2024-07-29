@@ -20,6 +20,8 @@
 # include <limits.h>
 # include <stdint.h>
 # include <fcntl.h>
+# include <stdio.h>
+# include <stdbool.h>
 
 // linked list type
 typedef struct s_list
@@ -58,6 +60,7 @@ void		*ft_memmove(void *dst, const void *src, size_t len);
 void		*ft_memset(void *b, int c, size_t len);
 void		ft_bzero(void *s, size_t n);
 void		*ft_calloc(size_t num, size_t size);
+void		ft_free(void *ptr);
 
 // conversion functions
 int			ft_nbrlen(int n);
@@ -76,6 +79,7 @@ char		*ft_strchr(const char *s, int c);
 char		*ft_strdup(const char *s1);
 char		*ft_strndup(const char *s1, size_t n);
 size_t		ft_strlcat(char *dst, const char *src, size_t size);
+char		*ft_strcpy(char *dst, const char *src);
 size_t		ft_strlcpy(char *dst, const char *src, size_t size);
 size_t		ft_strlen(const char *s);
 int			ft_strcmp(const char *s1, const char *s2);

@@ -11,20 +11,20 @@
 # **************************************************************************** #
 
 # color codes
-END=\033[0m
-BOLD=\033[1m
-UNDER=\033[4m
-REV=\033[7m
-GREY=\033[30m
-RED=\033[31m
-GREEN=\033[32m
-YELLOW=\033[33m
-BLUE=\033[34m
-PURPLE=\033[35m
-CYAN=\033[36m
-WHITE=\033[37m
-HIDE=\033[?25l
-SHOW=\033[?25h
+RESET	= \033[0m
+BLACK 	= \033[0;30m
+RED 	= \033[0;31m
+REDB	 = \033[1;31m
+GREEN 	= \033[1;32m
+YELLOW 	= \033[0;33m
+YELLOWB = \033[1;33m
+BLUE	= \033[0;34m
+PURPLE 	= \033[0;35m
+CYAN 	= \033[0;36m
+WHITE 	= \033[0;37m
+HIDE	= \033[?25l
+SHOW	= \033[?25h
+BOLD	= \033[1m
 
 # character
 OBJS_CHAR = $(SRC_CHAR:.c=.o)
@@ -44,7 +44,7 @@ ft_lstlast.c ft_lstmap.c ft_lstnew.c ft_lstsize.c \
 OBJS_MEM = $(SRC_MEM:.c=.o)
 SRC_MEM	= $(addprefix $(SRC_DIR)/mem/, \
 ft_bzero.c ft_calloc.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c \
-ft_memset.c \
+ft_memset.c ft_free.c \
 )
 
 # conversion
@@ -58,7 +58,7 @@ OBJS_STR = $(SRC_STR:.c=.o)
 SRC_STR	= $(addprefix $(SRC_DIR)/str/, \
 ft_split.c ft_strchr.c ft_strdup.c ft_strndup.c \
 ft_striteri.c ft_strjoin.c ft_strlcat.c ft_strlcpy.c \
-ft_strlen.c ft_strmapi.c ft_strcmp.c ft_strncmp.c \
+ft_strcpy.c ft_strlen.c ft_strmapi.c ft_strcmp.c ft_strncmp.c \
 ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c ft_in.c \
 )
 
@@ -90,35 +90,35 @@ MF = Makefile
 
 FLAGS = -Wall -Wextra -Werror
 
-LIBFT_NAME = libft.a
+NAME = libft.a
 HEADER	= $(INC_DIR)/libft.h
 
+SRCS = $(SRC_CHAR) $(SRC_LST) $(SRC_MEM) $(SRC_CONV) $(SRC_STR) $(SRC_PUT) $(SRC_PRINTF) $(SRC_GNL)
+OBJS = $(OBJS_CHAR) $(OBJS_LST) $(OBJS_MEM) $(OBJS_CONV) $(OBJS_STR) $(OBJS_PUT) $(OBJS_PRINTF) $(OBJS_GNL)
+
 COUNTER = 0
-TOTAL_FILES = $(shell echo $$(($(words $(SRC_CHAR)) + $(words $(SRC_LST)) + $(words $(SRC_MEM)) + $(words $(SRC_CONV)) + $(words $(SRC_STR)) + $(words $(SRC_PUT)) + $(words $(SRC_PRINTF)) + $(words $(SRC_GNL)))))
+TOTAL_FILES = $(shell echo $$(( $(words $(SRCS)) + 1 )))
 
-all : $(LIBFT_NAME)
+all : $(NAME)
 
-$(LIBFT_NAME) : $(MF) $(OBJS_CHAR) $(OBJS_LST) $(OBJS_MEM) $(OBJS_CONV) $(OBJS_STR) $(OBJS_PUT) $(OBJS_PRINTF) $(OBJS_GNL)
-	@/bin/echo -en "$(HIDE)"
-	@$(AR) -rcs $(LIBFT_NAME) $(OBJS_CHAR) $(OBJS_LST) $(OBJS_MEM) $(OBJS_CONV) $(OBJS_STR) $(OBJS_PUT) $(OBJS_PRINTF) $(OBJS_GNL)
-	@/bin/echo -e "\n$(BOLD)${GREEN}> Compiled libft successfully$(END)"
-	@/bin/echo -en "$(SHOW)"
+$(NAME) : $(MF) $(OBJS) $(HEADER)
+	@$(AR) -rcs $(NAME) $(OBJS)
+	@echo "\n${GREEN}> Compiled libft successfully$(RESET)$(SHOW)"
 
 clean :
-	@rm -f $(OBJS_CHAR) $(OBJS_LST) $(OBJS_MEM) $(OBJS_CONV) $(OBJS_STR) $(OBJS_PUT) $(OBJS_PRINTF) $(OBJS_GNL)
-	@/bin/echo -e "$(YELLOW)> All objects files of libft have been deleted$(END)"
+	@rm -f $(OBJS)
+	@echo "$(YELLOW)> All objects files of libft have been deleted$(RESET)"
 
 fclean : clean
-	@rm -f $(LIBFT_NAME)
-	@/bin/echo -e "$(BOLD)$(GREEN)> Cleaning of libft has been done$(END)"
+	@rm -f $(NAME)
+	@echo "$(REDB)> Cleaning of libft has been done$(RESET)"
 
 re : fclean all
 
 %.o : %.c $(HEADER) Makefile
-	@/bin/echo -en "$(HIDE)"
 	@$(eval COUNTER=$(shell echo $$(($(COUNTER) + 1))))
 	@$(CC) $(FLAGS) -c $< -o $@ -I $(INC_DIR)
-	@/bin/echo -en "$(BOLD)$(YELLOW)\rCompiling: $(END)["
+	@printf "$(HIDE)$(YELLOWB)\rCompiling libft: $(RESET)["
 	@printf "%0.s#" $(shell seq 1 $(COUNTER))
 	@if [ $(COUNTER) -lt $(TOTAL_FILES) ]; then \
 		printf "%0.s." $(shell seq 1 $$(($(TOTAL_FILES) - $(COUNTER)))); \
