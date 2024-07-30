@@ -14,11 +14,14 @@
 
 int	ft_in(const char s, const char *set)
 {
+	int	times;
+
+	times = 0;
 	while (*set)
 	{
 		if (s == *set)
-			return (1);
+			times++;
 		set++;
 	}
-	return (0);
+	return (times);
 }
